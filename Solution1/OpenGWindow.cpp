@@ -508,6 +508,7 @@ int WINAPI WinMain(HINSTANCE	hInstance,				// 当前窗口实例
 					Example5_DoKeysAction(VK_DOWN, keys[VK_DOWN]);
 					Example5_DoKeysAction(VK_RIGHT, keys[VK_RIGHT]);
 					Example5_DoKeysAction(VK_LEFT, keys[VK_LEFT]);
+					Example5_DoKeysAction('B', keys['B']);
 #endif // EXAMPLE5
 
 				}

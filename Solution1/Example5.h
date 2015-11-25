@@ -25,6 +25,9 @@ static GLuint filter;
 
 static GLuint texture[3];
 
+static BOOL blend;
+static BOOL bp;
+
 extern AUX_RGBImageRec* Example5_LoadBMP(char* filename);
 extern int Example5_LoadGLTextures();
 extern int Example5_InitGL(GLvoid);

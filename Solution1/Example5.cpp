@@ -35,13 +35,13 @@ extern int Example5_LoadGLTextures()
 		//bind texture
 		glBindTexture(GL_TEXTURE_2D, texture[0]);
 		//generate texture, nearest filter
-		glTexImage2D(GL_TEXTURE_2D, 0, 3, textureImage[0]->sizeX, textureImage[0]->sizeY, 0, GL_RGB, GL_UNSIGNED_BYTE, textureImage[0]->data);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, textureImage[0]->sizeX, textureImage[0]->sizeY, 0, GL_RGB, GL_UNSIGNED_BYTE, textureImage[0]->data);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
 		glBindTexture(GL_TEXTURE_2D, texture[1]);
 		//generate texture, linear filter
-		glTexImage2D(GL_TEXTURE_2D, 0, 3, textureImage[0]->sizeX, textureImage[0]->sizeY, 0, GL_RGB, GL_UNSIGNED_BYTE, textureImage[0]->data);
+		glTexImage2D(GL_TEXTURE_2D, 0, 3, textureImage[0]->sizeX, textureImage[0]->sizeY, 0, GL_RGBA, GL_UNSIGNED_BYTE, textureImage[0]->data);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
@@ -50,7 +50,7 @@ extern int Example5_LoadGLTextures()
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR_MIPMAP_NEAREST);
 
-		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, textureImage[0]->sizeX, textureImage[0]->sizeY, GL_RGB, GL_UNSIGNED_BYTE, textureImage[0]->data);
+		gluBuild2DMipmaps(GL_TEXTURE_2D, 3, textureImage[0]->sizeX, textureImage[0]->sizeY, GL_RGBA, GL_UNSIGNED_BYTE, textureImage[0]->data);
 
 		if (textureImage[0]->data)
 		{
@@ -81,6 +81,10 @@ extern int Example5_InitGL(GLvoid)
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
 	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+
+	glColor4f(1.0f, 1.0f, 1.0f, 0.5f);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+
 	return TRUE;
 }
 
@@ -207,6 +211,30 @@ void Example5_DoKeysAction(int index, BOOL press)
 			fp = FALSE;
 		}
 
+	}
+
+	if (index == 'B')
+	{
+		if (press && !bp)
+		{
+			bp = TRUE;
+			blend = !blend;
+			if (blend)
+			{
+				glEnable(GL_BLEND);
+				glDisable(GL_DEPTH_TEST);
+			}
+			else
+			{
+				glDisable(GL_BLEND);
+				glEnable(GL_DEPTH_TEST);
+			}
+		}
+
+		if (!press)
+		{
+			bp = FALSE;
+		}
 	}
 
 	if (press)
