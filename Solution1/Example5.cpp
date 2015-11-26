@@ -1,22 +1,9 @@
 #include "Example5.h"
+#include "Util.h"
 
 extern AUX_RGBImageRec* Example5_LoadBMP(char* filename)
 {
-	FILE* file = NULL;
-
-	if (!filename)
-	{
-		return NULL;
-	}
-
-	fopen_s(&file, filename, "r");
-	if (file)
-	{
-		fclose(file);
-		return auxDIBImageLoad(filename);
-	}
-
-	return NULL;
+	return LoadBMP(filename);
 }
 
 extern int Example5_LoadGLTextures()
@@ -223,11 +210,13 @@ void Example5_DoKeysAction(int index, BOOL press)
 			{
 				glEnable(GL_BLEND);
 				glDisable(GL_DEPTH_TEST);
+				//glDepthMask(FALSE);
 			}
 			else
 			{
 				glDisable(GL_BLEND);
 				glEnable(GL_DEPTH_TEST);
+				//glDepthMask(TRUE);
 			}
 		}
 

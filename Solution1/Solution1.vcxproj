@@ -16,7 +16,9 @@
     <ClCompile Include="Example3.cpp" />
     <ClCompile Include="Example4.cpp" />
     <ClCompile Include="Example5.cpp" />
+    <ClCompile Include="Example6.cpp" />
     <ClCompile Include="OpenGWindow.cpp" />
+    <ClCompile Include="Util.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Example1.h" />
@@ -24,6 +26,8 @@
     <ClInclude Include="Example3.h" />
     <ClInclude Include="Example4.h" />
     <ClInclude Include="Example5.h" />
+    <ClInclude Include="Example6.h" />
+    <ClInclude Include="Util.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7E7B466F-F639-419C-A2F6-4E528212247A}</ProjectGuid>

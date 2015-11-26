@@ -3,7 +3,8 @@
 //#define EXAMPLE2
 //#define EXAMPLE3
 //#define EXAMPLE4
-#define EXAMPLE5
+//#define EXAMPLE5
+#define EXAMPLE6
 
 #include <windows.h>
 #include <gl/glew.h>
@@ -24,6 +25,10 @@
 
 #ifdef EXAMPLE5
 #include "Example5.h"
+#endif
+
+#ifdef EXAMPLE6
+#include "Example6.h"
 #endif
 
 
@@ -63,6 +68,9 @@ int InitGL(GLvoid)
 #ifdef EXAMPLE5
 	return Example5_InitGL();
 #endif
+#ifdef EXAMPLE6
+	return Example6_InitGL();
+#endif
 #ifdef DEFAULT
 	glShadeModel(GL_SMOOTH);
 
@@ -96,6 +104,9 @@ int DrawGLScene(GLvoid)
 #endif
 #ifdef EXAMPLE5
 	return Example5_DrawGLScene();
+#endif
+#ifdef EXAMPLE6
+	return Example6_DrawGLScene();
 #endif
 #ifdef DEFAULT
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -510,6 +521,9 @@ int WINAPI WinMain(HINSTANCE	hInstance,				// 当前窗口实例
 					Example5_DoKeysAction(VK_LEFT, keys[VK_LEFT]);
 					Example5_DoKeysAction('B', keys['B']);
 #endif // EXAMPLE5
+#ifdef EXAMPLE6
+					Example6_DoKeysAction(keys);
+#endif
 
 				}
 			}

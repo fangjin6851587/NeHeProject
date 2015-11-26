@@ -36,6 +36,12 @@
     <ClCompile Include="Example5.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Example6.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Util.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Example1.h">
@@ -51,6 +57,12 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Example5.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Example6.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Util.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
