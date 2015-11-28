@@ -3,12 +3,14 @@
 //#define EXAMPLE2
 //#define EXAMPLE3
 //#define EXAMPLE4
-//#define EXAMPLE5
-#define EXAMPLE6
+#define EXAMPLE5
+//#define EXAMPLE6
 
 #include <windows.h>
 #include <gl/glew.h>
 #include <gl/GLUT.H>
+#include "ExampleBase.h"
+#include "GlobalExampleDefine.h"
 
 #ifdef EXAMPLE1
 #include "Example1.h"
@@ -31,15 +33,13 @@
 #include "Example6.h"
 #endif
 
-
 HGLRC hrc = NULL;
 HDC hdc = NULL;
 HWND hwnd = NULL;
 HINSTANCE hInstance;
-
-bool keys[256];
 bool active = TRUE;
 bool fullscreen = TRUE;
+ExampleBase* example = NULL;
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
@@ -65,56 +65,34 @@ GLvoid ReSizeGLScene(GLsizei width, GLsizei height)
 
 int InitGL(GLvoid)
 {
+#ifdef EXAMPLE1
+	example = new Example1();
+#endif // EXAMPLE1
+#ifdef EXAMPLE2
+	example = new Example2();
+#endif
+#ifdef EXAMPLE3
+	example = new Example3();
+#endif
+#ifdef EXAMPLE4
+	example = new Example4();
+#endif
 #ifdef EXAMPLE5
-	return Example5_InitGL();
+	example = new Example5();
 #endif
 #ifdef EXAMPLE6
-	return Example6_InitGL();
+	example = new Example6();
 #endif
-#ifdef DEFAULT
-	glShadeModel(GL_SMOOTH);
-
-	glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-
-	glClearDepth(1.0f);
-
-	glEnable(GL_DEPTH_TEST);
-
-	glDepthFunc(GL_LEQUAL);
-
-	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-
-	return TRUE;
-#endif
+	if(example)
+		return example->InitGL();
+	return FALSE;
 }
 
 int DrawGLScene(GLvoid)
 {
-#ifdef EXAMPLE1
-	return Example1_DrawGLScene();
-#endif
-#ifdef EXAMPLE2
-	return Example2_DrawGLScene();
-#endif
-#ifdef EXAMPLE3
-	return Example3_DrawGLScene();
-#endif
-#ifdef EXAMPLE4
-	return Example4_DrawGLScene();
-#endif
-#ifdef EXAMPLE5
-	return Example5_DrawGLScene();
-#endif
-#ifdef EXAMPLE6
-	return Example6_DrawGLScene();
-#endif
-#ifdef DEFAULT
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-	glLoadIdentity();
-
-	return TRUE;
-#endif
+	if (example)
+		return example->DrawGLScene();
+	return FALSE;
 }
 
 GLvoid KillGLWindow(GLvoid)
@@ -508,23 +486,10 @@ int WINAPI WinMain(HINSTANCE	hInstance,				// 当前窗口实例
 				{
 					DrawGLScene();				// 绘制场景
 					SwapBuffers(hdc);			// 交换缓存 (双缓存)
-
-
-#ifdef EXAMPLE5
-					Example5_DoKeysAction('L', keys['L']);
-					Example5_DoKeysAction('F', keys['F']);
-					Example5_DoKeysAction(VK_PRIOR, keys[VK_PRIOR]);
-					Example5_DoKeysAction(VK_NEXT, keys[VK_NEXT]);
-					Example5_DoKeysAction(VK_UP, keys[VK_UP]);
-					Example5_DoKeysAction(VK_DOWN, keys[VK_DOWN]);
-					Example5_DoKeysAction(VK_RIGHT, keys[VK_RIGHT]);
-					Example5_DoKeysAction(VK_LEFT, keys[VK_LEFT]);
-					Example5_DoKeysAction('B', keys['B']);
-#endif // EXAMPLE5
-#ifdef EXAMPLE6
-					Example6_DoKeysAction(keys);
-#endif
-
+					if (example)
+					{
+						example->DoKeysAction();
+					}
 				}
 			}
 
@@ -535,13 +500,13 @@ int WINAPI WinMain(HINSTANCE	hInstance,				// 当前窗口实例
 				fullscreen = !fullscreen;				// 切换 全屏 / 窗口 模式
 				// 重建 OpenGL 窗口
 
-#ifdef EXAMPLE1
-				if (!CreateGLWindow("NeHe's OpenGL Example1", 640, 480, 16, fullscreen))
+#ifdef DEFAULT
+				if (!CreateGLWindow("NeHe's OpenGL Framework", 640, 480, 16, fullscreen))
 				{
 					return 0;				
 				}
 #else
-				if (!CreateGLWindow("NeHe's OpenGL Framework", 640, 480, 16, fullscreen))
+				if (example && !CreateGLWindow(example->GetGLWindowTitle(), 640, 480, 16, fullscreen))
 				{
 					return 0;				// 如果窗口未能创建，程序退出
 				}

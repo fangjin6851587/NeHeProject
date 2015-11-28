@@ -1,7 +1,7 @@
 #include "Example1.h"
 #include <windows.h>
 
-int Example1_DrawGLScene(GLvoid)
+int Example1::DrawGLScene(GLvoid)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
@@ -24,4 +24,14 @@ int Example1_DrawGLScene(GLvoid)
 	glEnd();
 
 	return TRUE;
+}
+
+Example1::Example1()
+{
+
+}
+
+Example1::~Example1()
+{
+
 }

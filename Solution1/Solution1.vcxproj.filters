@@ -13,16 +13,10 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Examples">
-      <UniqueIdentifier>{95868a73-e51a-4b50-a8ca-97e7e4b69286}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="OpenGWindow.cpp">
       <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="Example1.cpp">
-      <Filter>Examples</Filter>
     </ClCompile>
     <ClCompile Include="Example2.cpp">
       <Filter>源文件</Filter>
@@ -42,11 +36,17 @@
     <ClCompile Include="Util.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Example1.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="ExampleBase.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="GlobalExampleDefine.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Example1.h">
-      <Filter>Examples</Filter>
-    </ClInclude>
     <ClInclude Include="Example2.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -63,6 +63,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Util.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Example1.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="GlobalExampleDefine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="ExampleBase.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

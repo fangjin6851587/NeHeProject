@@ -4,34 +4,43 @@
 #include <gl/glew.h>
 #include <gl/GLAUX.H>
 #include <stdio.h>
+#include "ExampleBase.h"
 
-static BOOL light;
-static BOOL lp;
-static BOOL fp;
+class Example5 : public ExampleBase
+{
+public:
+	Example5();
+	~Example5();
 
-static GLfloat xrot;
-static GLfloat yrot;
-static GLfloat zrot;
+	virtual void DoKeysAction() override;
 
-static GLfloat xspeed;
-static GLfloat yspeed;
+	virtual int DrawGLScene(GLvoid) override;
 
-static GLfloat z = -0.5f;
-static GLfloat LightAmbient[] = { 0.5f, 0.5f, 0.5f, 1.0f };
-static GLfloat LightDiffuse[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-static GLfloat LightPosition[] = { 0.0f, 0.0f, 2.0f, 1.0f };
+	virtual int InitGL(GLvoid) override;
 
-static GLuint filter;
+	virtual int LoadGLTextures() override;
 
-static GLuint texture[3];
+private:
 
-static BOOL blend;
-static BOOL bp;
+	static  const GLfloat LightAmbient[4];
+	static const GLfloat LightDiffuse[4];
+	static const GLfloat LightPosition[4];
 
-extern AUX_RGBImageRec* Example5_LoadBMP(char* filename);
-extern int Example5_LoadGLTextures();
-extern int Example5_InitGL(GLvoid);
-extern int Example5_DrawGLScene(GLvoid);
-extern void Example5_DoKeysAction(int index, BOOL press);
+	BOOL light = FALSE;
+	BOOL lp = FALSE;
+	BOOL fp = FALSE;
+	BOOL blend = FALSE;
+	BOOL bp = FALSE;
+
+	GLfloat xrot = 0;
+	GLfloat yrot = 0;
+	GLfloat zrot = 0;
+
+	GLfloat xspeed = 0;
+	GLfloat yspeed = 0;
+	GLfloat z = 0.1f;
+	GLuint filter = 0;
+	GLuint texture[3];
+};
 
 #endif

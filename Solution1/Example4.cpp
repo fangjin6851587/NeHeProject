@@ -1,10 +1,17 @@
 #include "Example4.h"
 #include <windows.h>
 
-static GLfloat rtri;
-static GLfloat rquad;
+Example4::Example4()
+{
 
-int Example4_DrawGLScene(GLvoid)
+}
+
+Example4::~Example4()
+{
+
+}
+
+int Example4::DrawGLScene(GLvoid)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 

@@ -1,6 +1,16 @@
 #include "Util.h"
 
-extern AUX_RGBImageRec *LoadBMP(const char* filename)
+Util::Util()
+{
+
+}
+
+Util::~Util()
+{
+
+}
+
+AUX_RGBImageRec * Util::LoadBMP(const char* filename)
 {
 	FILE* file = NULL;
 
@@ -19,7 +29,7 @@ extern AUX_RGBImageRec *LoadBMP(const char* filename)
 	return NULL;
 }
 
-extern int LoadGLTextures(const char* filename, GLuint texture[])
+int Util::LoadGLTextures(const char* filename, GLuint *texture)
 {
 	int status = FALSE;
 

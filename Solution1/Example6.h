@@ -1,34 +1,56 @@
 #ifndef EXAMPLE6_H
 #define  EXAMPLE6_H
 
+#include "ExampleBase.h"
 #include <stdio.h>
 #include <gl/GLAUX.H>
+#ifndef GLOBAL_EXAMPLE_DEFINE
+#include "GlobalExampleDefine.h"
+#endif // !GLOBAL_EXAMPLE_DEFINE
 
-static BOOL twinkle; //ÊÇ·ñ¿ªÆôÉÁË¸
-static BOOL tp;
 
-static const int num = 50;
 
-typedef struct
+class Example6 : public ExampleBase
 {
-	int r, g, b;
-	GLfloat dis;
-	GLfloat angle;
-}starts;
 
-static starts star[num];
+public:
+	Example6();
+	~Example6();
 
-static GLfloat zoom = -15.0f; //ÐÇÐÇ¾à¹Û²ìÕß¾àÀë
-static GLfloat tilt = 90.0f; //ÐÇÐÇµÄÇã½Ç
-static GLfloat spin;		  //ÐÇÐÇµÄ×Ô×ª
+	virtual void DoKeysAction() override;
 
-static GLuint loop;
-static GLuint texture[1];
+	virtual int DrawGLScene(GLvoid) override;
 
-extern int Example6_LoadGLTextures();
-extern int Example6_InitGL(GLvoid);
-extern int Example6_DrawGLScene(GLvoid);
-extern void Example6_DoKeysAction(bool keys[]);
+	virtual int InitGL(GLvoid) override;
+
+	virtual int LoadGLTextures() override;
+
+	virtual char* GetGLWindowTitle() override;
+
+private:
+
+	typedef struct
+	{
+		int r, g, b;
+		GLfloat dis;
+		GLfloat angle;
+	}starts;
+
+	static const int num = 50;
+
+	starts star[num];
+
+
+	BOOL twinkle = FALSE; //ÊÇ·ñ¿ªÆôÉÁË¸
+	BOOL tp = FALSE;
+
+	GLfloat zoom = -15.0f; //ÐÇÐÇ¾à¹Û²ìÕß¾àÀë
+	GLfloat tilt = 90.0f; //ÐÇÐÇµÄÇã½Ç
+	GLfloat spin = 0;		  //ÐÇÐÇµÄ×Ô×ª
+
+	GLuint loop = 0;
+	GLuint texture[1];
+};
 
 #endif // !EXAMPLE6_H
 

@@ -1,39 +1,49 @@
 #include "Example6.h"
 #include "Util.h"
 
-extern int Example6_LoadGLTextures()
+Example6::Example6()
 {
-	return LoadGLTextures("Data/Star.bmp", texture);
 }
 
-extern int Example6_InitGL(GLvoid)
+Example6::~Example6()
 {
-	if (!Example6_LoadGLTextures())
-	{
-		return FALSE;
-	}
 
-	glEnable(GL_TEXTURE_2D);
-	glShadeModel(GL_SMOOTH);
-	glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
-	glClearDepth(1.0f);
-	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
-	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
-	glEnable(GL_BLEND);
-
-	for (loop = 0; loop < num; loop++)
-	{
-		star[loop].angle = 0.0f;
-		star[loop].dis = ((float)loop / num) * 5.0f;
-		star[loop].r = rand() % 256;
-		star[loop].g = rand() % 256;
-		star[loop].b = rand() % 256;
-	}
-
-	return TRUE;
 }
 
-extern int Example6_DrawGLScene(GLvoid)
+void Example6::DoKeysAction()
+{
+	if (keys['T'] && !tp)
+	{
+		tp = TRUE;
+		twinkle = !twinkle;
+	}
+	if (!keys['T'])
+	{
+		tp = FALSE;
+	}
+
+	if (keys[VK_UP])				// 上方向键按下了么？
+	{
+		tilt -= 0.5f;				// 屏幕向上倾斜
+	}
+
+	if (keys[VK_DOWN])				// 下方向键按下了么？
+	{
+		tilt += 0.5f;				// 屏幕向下倾斜
+	}
+
+	if (keys[VK_PRIOR])				// 向上翻页键按下了么
+	{
+		zoom -= 0.2f;				// 缩小
+	}
+
+	if (keys[VK_NEXT])				// 向下翻页键按下了么？
+	{
+		zoom += 0.2f;				// 放大
+	}
+}
+
+int Example6::DrawGLScene(GLvoid)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glBindTexture(GL_TEXTURE_2D, texture[0]);
@@ -86,39 +96,43 @@ extern int Example6_DrawGLScene(GLvoid)
 			star[loop].b = rand() % 256;
 		}
 	}
-	
+
 	return TRUE;
 }
 
-extern void Example6_DoKeysAction(bool keys[])
+int Example6::InitGL(GLvoid)
 {
-	if (keys['T'] && !tp)
+	if (!LoadGLTextures())
 	{
-		tp = TRUE;
-		twinkle = !twinkle;
-	}
-	if (!keys['T'])
-	{
-		tp = FALSE;
+		return FALSE;
 	}
 
-	if (keys[VK_UP])				// 上方向键按下了么？
+	glEnable(GL_TEXTURE_2D);
+	glShadeModel(GL_SMOOTH);
+	glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
+	glClearDepth(1.0f);
+	glHint(GL_PERSPECTIVE_CORRECTION_HINT, GL_NICEST);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE);
+	glEnable(GL_BLEND);
+
+	for (loop = 0; loop < num; loop++)
 	{
-		tilt -= 0.5f;				// 屏幕向上倾斜
+		star[loop].angle = 0.0f;
+		star[loop].dis = ((float)loop / num) * 5.0f;
+		star[loop].r = rand() % 256;
+		star[loop].g = rand() % 256;
+		star[loop].b = rand() % 256;
 	}
 
-	if (keys[VK_DOWN])				// 下方向键按下了么？
-	{
-		tilt += 0.5f;				// 屏幕向下倾斜
-	}
+	return TRUE;
+}
 
-	if (keys[VK_PRIOR])				// 向上翻页键按下了么
-	{
-		zoom -= 0.2f;				// 缩小
-	}
+int Example6::LoadGLTextures()
+{
+	return Util::LoadGLTextures("Data/Star.bmp", texture);
+}
 
-	if (keys[VK_NEXT])				// 向下翻页键按下了么？
-	{
-		zoom += 0.2f;				// 放大
-	}
+char* Example6::GetGLWindowTitle()
+{
+	return "Example6";
 }

@@ -1,7 +1,7 @@
 #include "Example2.h"
 #include <windows.h>
 
-int Example2_DrawGLScene(GLvoid)
+int Example2::DrawGLScene(GLvoid)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
@@ -22,7 +22,7 @@ int Example2_DrawGLScene(GLvoid)
 	glEnd();
 
 	glTranslatef(3.0f, 0.0f, 0.0f);
-	
+
 	glColor3f(0.5f, 0.5f, 1.0f);
 	glBegin(GL_QUADS);
 
@@ -34,4 +34,14 @@ int Example2_DrawGLScene(GLvoid)
 	glEnd();
 
 	return TRUE;
+}
+
+Example2::Example2()
+{
+
+}
+
+Example2::~Example2()
+{
+
 }

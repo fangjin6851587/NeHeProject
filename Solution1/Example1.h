@@ -1,8 +1,17 @@
 #ifndef EXAMPLE1_H
 #define  EXAMPLE1_H
 
-#include <gl/glew.h>
+#include "ExampleBase.h"
 
-extern int Example1_DrawGLScene(GLvoid);
+class Example1 : public ExampleBase
+{
+public:
+	Example1 ();
+	~Example1 ();
 
+	virtual int DrawGLScene(GLvoid) override;
+
+private:
+
+};
 #endif
