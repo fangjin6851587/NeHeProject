@@ -45,6 +45,15 @@
     <ClCompile Include="GlobalExampleDefine.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Example7.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Example8.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Example9.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Example2.h">
@@ -72,6 +81,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="ExampleBase.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Example7.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Example8.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Example9.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>

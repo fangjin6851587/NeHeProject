@@ -5,6 +5,8 @@
 #include <gl/GLAUX.H>
 #include <stdio.h>
 #include "ExampleBase.h"
+#include "Util.h"
+#include "GlobalExampleDefine.h"
 
 class Example5 : public ExampleBase
 {

@@ -29,7 +29,7 @@ AUX_RGBImageRec * Util::LoadBMP(const char* filename)
 	return NULL;
 }
 
-int Util::LoadGLTextures(const char* filename, GLuint *texture)
+int Util::LoadGLTextures(const char* filename, GLuint *texture, GLint minfilter /*= GL_LINEAR*/, GLint magfilter /*= GL_LINEAR*/)
 {
 	int status = FALSE;
 
@@ -44,8 +44,8 @@ int Util::LoadGLTextures(const char* filename, GLuint *texture)
 
 			glGenTextures(1, &texture[0]);
 			glBindTexture(GL_TEXTURE_2D, texture[0]);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, minfilter);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, magfilter);
 			glTexImage2D(GL_TEXTURE_2D, 0, 3, textImage[0]->sizeX, textImage[0]->sizeY, 0, GL_RGB, GL_UNSIGNED_BYTE, textImage[0]->data);
 		}
 

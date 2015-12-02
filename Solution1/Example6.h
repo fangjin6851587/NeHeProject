@@ -4,10 +4,8 @@
 #include "ExampleBase.h"
 #include <stdio.h>
 #include <gl/GLAUX.H>
-#ifndef GLOBAL_EXAMPLE_DEFINE
+#include "Util.h"
 #include "GlobalExampleDefine.h"
-#endif // !GLOBAL_EXAMPLE_DEFINE
-
 
 
 class Example6 : public ExampleBase

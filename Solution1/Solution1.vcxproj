@@ -17,6 +17,9 @@
     <ClCompile Include="Example4.cpp" />
     <ClCompile Include="Example5.cpp" />
     <ClCompile Include="Example6.cpp" />
+    <ClCompile Include="Example7.cpp" />
+    <ClCompile Include="Example8.cpp" />
+    <ClCompile Include="Example9.cpp" />
     <ClCompile Include="ExampleBase.cpp" />
     <ClCompile Include="GlobalExampleDefine.cpp" />
     <ClCompile Include="OpenGWindow.cpp" />
@@ -29,6 +32,9 @@
     <ClInclude Include="Example4.h" />
     <ClInclude Include="Example5.h" />
     <ClInclude Include="Example6.h" />
+    <ClInclude Include="Example7.h" />
+    <ClInclude Include="Example8.h" />
+    <ClInclude Include="Example9.h" />
     <ClInclude Include="ExampleBase.h" />
     <ClInclude Include="GlobalExampleDefine.h" />
     <ClInclude Include="Util.h" />

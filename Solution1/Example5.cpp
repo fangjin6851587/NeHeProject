@@ -1,6 +1,4 @@
 #include "Example5.h"
-#include "Util.h"
-#include "GlobalExampleDefine.h"
 
 Example5::Example5()
 {

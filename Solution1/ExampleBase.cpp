@@ -49,3 +49,8 @@ int ExampleBase::InitGL(GLvoid)
 
 	return TRUE;
 }
+
+void ExampleBase::KillWindow()
+{
+
+}

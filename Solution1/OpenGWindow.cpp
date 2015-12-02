@@ -3,8 +3,12 @@
 //#define EXAMPLE2
 //#define EXAMPLE3
 //#define EXAMPLE4
-#define EXAMPLE5
+//#define EXAMPLE5
 //#define EXAMPLE6
+//#define EXAMPLE7
+//#define EXAMPLE8
+#define EXAMPLE9
+
 
 #include <windows.h>
 #include <gl/glew.h>
@@ -24,21 +28,22 @@
 #ifdef EXAMPLE4
 #include "Example4.h"
 #endif
-
 #ifdef EXAMPLE5
 #include "Example5.h"
 #endif
-
 #ifdef EXAMPLE6
 #include "Example6.h"
 #endif
+#ifdef EXAMPLE7
+#include "Example7.h"
+#endif
+#ifdef EXAMPLE8
+#include "Example8.h"
+#endif
+#ifdef EXAMPLE9
+#include "Example9.h"
+#endif
 
-HGLRC hrc = NULL;
-HDC hdc = NULL;
-HWND hwnd = NULL;
-HINSTANCE hInstance;
-bool active = TRUE;
-bool fullscreen = TRUE;
 ExampleBase* example = NULL;
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
@@ -83,6 +88,15 @@ int InitGL(GLvoid)
 #ifdef EXAMPLE6
 	example = new Example6();
 #endif
+#ifdef EXAMPLE7
+	example = new Example7();
+#endif
+#ifdef EXAMPLE8
+	example = new Example8();
+#endif
+#ifdef EXAMPLE9
+	example = new Example9();
+#endif
 	if(example)
 		return example->InitGL();
 	return FALSE;
@@ -97,6 +111,9 @@ int DrawGLScene(GLvoid)
 
 GLvoid KillGLWindow(GLvoid)
 {
+	if (example)
+		example->KillWindow();
+
 	if (fullscreen)
 	{
 		ChangeDisplaySettings(NULL, 0);

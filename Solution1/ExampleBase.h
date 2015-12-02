@@ -18,5 +18,6 @@ public:
 	virtual int DrawGLScene(GLvoid);
 	virtual void DoKeysAction();
 	virtual char* GetGLWindowTitle();
+	virtual void KillWindow();
 };
 
