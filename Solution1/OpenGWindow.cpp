@@ -7,7 +7,8 @@
 //#define EXAMPLE6
 //#define EXAMPLE7
 //#define EXAMPLE8
-#define EXAMPLE9
+//#define EXAMPLE9
+#define EXAMPLE10
 
 
 #include <windows.h>
@@ -42,6 +43,9 @@
 #endif
 #ifdef EXAMPLE9
 #include "Example9.h"
+#endif
+#ifdef EXAMPLE10
+#include "Example10.h"
 #endif
 
 ExampleBase* example = NULL;
@@ -96,6 +100,9 @@ int InitGL(GLvoid)
 #endif
 #ifdef EXAMPLE9
 	example = new Example9();
+#endif
+#ifdef EXAMPLE10
+	example = new Example10();
 #endif
 	if(example)
 		return example->InitGL();
