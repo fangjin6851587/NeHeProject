@@ -27,12 +27,15 @@ private:
 	static  const GLfloat LightAmbient[4];
 	static const GLfloat LightDiffuse[4];
 	static const GLfloat LightPosition[4];
+	static const GLfloat FogColor[4];
+	static const GLuint FogMode[3];
 
 	BOOL light = FALSE;
 	BOOL lp = FALSE;
 	BOOL fp = FALSE;
 	BOOL blend = FALSE;
 	BOOL bp = FALSE;
+	BOOL gp = FALSE;
 
 	GLfloat xrot = 0;
 	GLfloat yrot = 0;
@@ -42,6 +45,7 @@ private:
 	GLfloat yspeed = 0;
 	GLfloat z = 0.1f;
 	GLuint filter = 0;
+	GLuint fogFilter = 0;
 	GLuint texture[3];
 };
 

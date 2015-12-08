@@ -62,6 +62,22 @@ void Example5::DoKeysAction()
 		}
 	}
 
+	if (keys['G'] && !gp)
+	{
+		gp = TRUE;
+		fogFilter += 1;
+		if (fogFilter > 2)
+		{
+			fogFilter = 0;
+		}
+		glFogi(GL_FOG_MODE, FogMode[fogFilter]);
+	}
+
+	if (!keys['G'])
+	{
+		gp = FALSE;
+	}
+
 	if (!keys['B'])
 	{
 		bp = FALSE;
@@ -190,7 +206,17 @@ int Example5::InitGL(GLvoid)
 
 	glEnable(GL_TEXTURE_2D);
 	glShadeModel(GL_SMOOTH);
-	glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
+	//glClearColor(0.0f, 0.0f, 0.0f, 0.5f);
+	glClearColor(0.5f, 0.5f, 0.5f, 1.0f); // 设置背景的颜色为雾气的颜色
+
+	glFogi(GL_FOG_MODE, FogMode[fogFilter]); // 设置雾气的模式
+	glFogfv(GL_FOG_COLOR, FogColor); // 设置雾的颜色
+	glFogf(GL_FOG_DENSITY, 0.35f); // 设置雾的密度
+	glHint(GL_FOG_HINT, GL_DONT_CARE); // 设置系统如何计算雾气
+	glFogf(GL_FOG_START, 1.0f); // 雾气的开始位置
+	glFogf(GL_FOG_END, 5.0f); // 雾气的结束位置
+	glEnable(GL_FOG); // 使用雾气
+
 	glClearDepth(1.0f);
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LEQUAL);
@@ -250,3 +276,7 @@ const GLfloat Example5::LightAmbient[4] = { 0.5f, 0.5f, 0.5f, 1.0f };
 const GLfloat Example5::LightDiffuse[4] = { 1.0f, 1.0f, 1.0f, 1.0f };
 
 const GLfloat Example5::LightPosition[4] = { 0.0f, 0.0f, 2.0f, 1.0f };
+
+const GLuint Example5::FogMode[3] = { GL_EXP, GL_EXP2, GL_LINEAR };
+
+const GLfloat Example5::FogColor[4] = { 0.5f, 0.5f, 0.5f, 1.0f };

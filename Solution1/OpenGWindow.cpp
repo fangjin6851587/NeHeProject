@@ -3,12 +3,12 @@
 //#define EXAMPLE2
 //#define EXAMPLE3
 //#define EXAMPLE4
-//#define EXAMPLE5
+#define EXAMPLE5
 //#define EXAMPLE6
 //#define EXAMPLE7
 //#define EXAMPLE8
 //#define EXAMPLE9
-#define EXAMPLE10
+//#define EXAMPLE10
 
 
 #include <windows.h>
